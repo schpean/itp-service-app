@@ -13,6 +13,7 @@ import java.nio.file.Path;
 
 public class Main extends Application {
 
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         initDirectory();
@@ -33,4 +34,5 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 }
