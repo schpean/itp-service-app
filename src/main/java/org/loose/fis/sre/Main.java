@@ -19,10 +19,11 @@ public class Main extends Application {
         initDirectory();
         UserService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
-        primaryStage.setTitle("Registration Example");
+        primaryStage.setTitle("Registration");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
     }
+
 
     private void initDirectory() {
         Path applicationHomePath = FileSystemService.APPLICATION_HOME_PATH;
@@ -33,6 +34,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+
     }
 
 }
