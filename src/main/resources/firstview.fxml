@@ -3,14 +3,13 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.2"
             fx:controller="org.loose.fis.sre.controllers.ViewController">
-
     <right>
         <AnchorPane prefHeight="700.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <TextField layoutX="203.0" layoutY="1.0" prefHeight="57.0" prefWidth="263.0"
@@ -36,9 +35,6 @@
                     <Cursor fx:constant="TEXT"/>
                 </cursor>
             </TextField>
-            <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="110.0" layoutY="100.0" pickOnBounds="true"
-                       preserveRatio="true">
-            </ImageView>
             <PasswordField fx:id="loginPasswordPasswordField" layoutX="150.0" layoutY="140.0" prefHeight="30.0"
                            prefWidth="300.0" promptText="Password"
                            style="-fx-border-width: 2; -fx-border-color: #A9A9A9; -fx-border-radius: 5;">
@@ -46,10 +42,6 @@
                     <Font name="SansSerif Regular" size="14.0"/>
                 </font>
             </PasswordField>
-            <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="110.0" layoutY="140.0" pickOnBounds="true"
-                       preserveRatio="true">
-            </ImageView>
-
             <Label fx:id="invalidLoginCredentials" alignment="CENTER" contentDisplay="CENTER" layoutX="150.0"
                    layoutY="175.0" prefHeight="16.0" prefWidth="300.0" textAlignment="CENTER" textFill="RED">
                 <opaqueInsets>
@@ -64,8 +56,63 @@
                     <Font size="15.0"/>
                 </font>
             </Button>
+            <Line endX="500.0" endY="380.0" fill="DARKGRAY" layoutY="-110.0" opacity="0.5" startX="100.0"
+                  startY="380.0" stroke="#a8a8a8ad" strokeLineJoin="BEVEL" strokeWidth="3.0"/>
+
+            <Label layoutX="230.0" layoutY="275.0" prefHeight="36.0" prefWidth="130.0"
+                   style="-fx-text-fill: #A9A9A9;" text="Sign-Up">
+                <font>
+                    <Font name="SansSerif Regular" size="30.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="signUpUsernameTextField" layoutX="155.0" layoutY="320.0" prefHeight="30.0"
+                       prefWidth="300.0" promptText="Username"
+                       style="-fx-border-width: 2; -fx-border-color: #A9A9A9; -fx-border-radius: 5;">
+                <font>
+                    <Font name="SansSerif Regular" size="14.0"/>
+                </font>
+                <cursor>
+                    <Cursor fx:constant="TEXT"/>
+                </cursor>
+            </TextField>
+            <TextField fx:id="signUpEmailTextField" layoutX="155.0" layoutY="360.0" prefHeight="30.0"
+                       prefWidth="300.0" promptText="Email"
+                       style="-fx-border-width: 2; -fx-border-color: #A9A9A9; -fx-border-radius: 5;">
+                <font>
+                    <Font name="SansSerif Regular" size="14.0"/>
+                </font>
+                <cursor>
+                    <Cursor fx:constant="TEXT"/>
+                </cursor>
+            </TextField>
+            <PasswordField fx:id="signUpPasswordPasswordField" layoutX="155.0" layoutY="400.0" prefHeight="30.0"
+                           prefWidth="300.0" promptText="Password"
+                           style="-fx-border-width: 2; -fx-border-color: #A9A9A9; -fx-border-radius: 5;">
+                <font>
+                    <Font name="SansSerif Regular" size="14.0"/>
+                </font>
+            </PasswordField>
+            <PasswordField fx:id="signUpRepeatPasswordPasswordField" layoutX="155.0" layoutY="440.0"
+                           prefHeight="30.0" prefWidth="300.0" promptText="Repeat Password"
+                           style="-fx-border-width: 2; -fx-border-color: #A9A9A9; -fx-border-radius: 5;">
+                <font>
+                    <Font name="SansSerif Regular" size="14.0"/>
+                </font>
+            </PasswordField>
+            <Label fx:id="invalidSignupCredentials" alignment="CENTER" contentDisplay="CENTER" layoutX="160.0"
+                   layoutY="580.0" prefHeight="16.0" prefWidth="300.0" textAlignment="CENTER" textFill="RED">
+                <opaqueInsets>
+                    <Insets/>
+                </opaqueInsets>
+            </Label>
+            <Button fx:id="signUpButton" layoutX="230.0" layoutY="615.0" mnemonicParsing="false"
+                    onAction="#onSignUpButtonClick" prefHeight="33.0" prefWidth="130.0"
+                    style="-fx-background-color: #24a0ed; -fx-text-fill: white; -fx-border-radius: 5; -fx-border-width: 2; -fx-border-color: #24a0ed;"
+                    text="Sign-Up">
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Button>
         </AnchorPane>
     </right>
-
-
 </BorderPane>
