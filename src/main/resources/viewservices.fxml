@@ -26,6 +26,16 @@
                                 </ImageView>
                             </children>
                         </VBox>
+                        <VBox style="-fx-padding: -90 -30 20 40;">
+                            <Label prefHeight="35.0" prefWidth="1000.0" text="We, at  PromptStation SA, assure ">
+                            </Label>
+                            <Label prefHeight="35.0" prefWidth="1000.0" text="professionalism is always a guarantee">
+                            </Label>
+                            <Label prefHeight="35.0" prefWidth="1000.0" text=" Always making sure that your car ">
+                            </Label>
+                            <Label prefHeight="35.0" prefWidth="1000.0" text=" will serve you well in the future ">
+                            </Label>
+                        </VBox>
                         <VBox style="-fx-padding: 0 5 20 85;">
                         <Button fx:id="ServiceSaguluiButton" layoutX="1150.0" layoutY="1000.0" mnemonicParsing="false" onAction="#onSaguluiButtonClick" style=" -fx-background-color: #24a0ed; -fx-text-fill: white; -fx-border-radius: 1; -fx-border-width: 2; -fx-border-color: #24a0ed;" text="Service Sagului" />
                         </VBox>
@@ -51,7 +61,14 @@
                                 </ImageView>
                             </children>
                         </VBox>
+                        <VBox style="-fx-padding: -50 -10 20 1;">
+                        <Label prefHeight="70.0" prefWidth="1000.0" text=" We are a service located in ">
+                          </Label>
+                            <Label prefHeight="35.0" prefWidth="1000.0" text=" Soarelui district at resonable prices! ">
+                            </Label>
+                         </VBox>
                         <VBox style="-fx-padding: 0 40 20 85;">
+
                             <Button fx:id="ServiceSoareluiButton" layoutX="1150.0" layoutY="1000.0" mnemonicParsing="false" onAction="#onSoareluiButtonClick" style=" -fx-background-color: #24a0ed; -fx-text-fill: white; -fx-border-radius: 1; -fx-border-width: 2; -fx-border-color: #24a0ed;" text="Service Soarelui" />
                         </VBox>
                     </children>
