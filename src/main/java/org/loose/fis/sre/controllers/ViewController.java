@@ -1,6 +1,7 @@
 package org.loose.fis.sre.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -11,6 +12,14 @@ public class ViewController {
     String errorMessage = String.format("-fx-text-fill: RED;");
     String errorStyle = String.format("-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;");
     String successStyle = String.format("-fx-border-color: #A9A9A9; -fx-border-width: 2; -fx-border-radius: 5;");
+
+    @FXML
+    private ChoiceBox role;
+
+    @FXML
+    public void initialize() {
+        role.getItems().addAll("Customer", "Engineer");
+    }
 
     @FXML
     private Label invalidLoginCredentials;

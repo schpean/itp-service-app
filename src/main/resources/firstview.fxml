@@ -123,6 +123,12 @@
                     <Font size="15.0"/>
                 </font>
             </Button>
+            <Label text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="3" layoutX="20.0" layoutY="200.0" prefHeight="30.0"
+                   prefWidth="300.0"/>
+
+            <ChoiceBox fx:id="role" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" layoutX="50.0" layoutY="200.0" prefHeight="30.0" >
+            </ChoiceBox>
+
         </AnchorPane>
     </right>
 </BorderPane>
