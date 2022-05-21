@@ -17,7 +17,7 @@
                                     </graphic></Label>
                             </children>
                         </VBox>
-                        <VBox prefHeight="355.0" prefWidth="257.0">
+                        <VBox prefHeight="355.0" prefWidth="357.0" style="-fx-padding: 0 5 20 20;">
                             <children>
                                 <ImageView fitHeight="234.0" fitWidth="249.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -44,14 +44,14 @@
                         </VBox>
                         <VBox prefHeight="355.0" prefWidth="257.0">
                             <children>
-                                <ImageView fitHeight="234.0" fitWidth="249.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="217.0" fitWidth="249.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@pozaSoarelui.png" />
                                     </image>
                                 </ImageView>
                             </children>
                         </VBox>
-                        <VBox style="-fx-padding: 0 5 20 85;">
+                        <VBox style="-fx-padding: 0 40 20 85;">
                             <Button fx:id="ServiceSoareluiButton" layoutX="1150.0" layoutY="1000.0" mnemonicParsing="false" onAction="#onSoareluiButtonClick" style=" -fx-background-color: #24a0ed; -fx-text-fill: white; -fx-border-radius: 1; -fx-border-width: 2; -fx-border-color: #24a0ed;" text="Service Soarelui" />
                         </VBox>
                     </children>
