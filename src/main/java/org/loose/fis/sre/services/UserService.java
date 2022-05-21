@@ -29,11 +29,23 @@ public class UserService {
         userRepository.insert(new User(username, encodePassword(username, password), role));
     }
 
-    private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
+    public static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
         for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername()))
                 throw new UsernameAlreadyExistsException(username);
         }
+    }
+
+    public static boolean checkIfAccountIsValid(String username, String password) {
+        String encodedPassword = encodePassword(username, password);
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername())) {
+                if(Objects.equals(encodedPassword, user.getPassword())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private static String encodePassword(String salt, String password) {

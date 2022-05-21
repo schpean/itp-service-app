@@ -4,6 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
+import org.loose.fis.sre.services.UserService;
+
+import java.io.IOException;
 
 public class ViewController {
 
@@ -39,57 +43,57 @@ public class ViewController {
     private TextField signUpRepeatPasswordPasswordField;
 
     @FXML
-    protected void onLoginButtonClick() {
-        if (loginUsernameTextField.getText().isBlank() || loginPasswordPasswordField.getText().isBlank()) {
-            invalidLoginCredentials.setText("The Login fields are required!");
-            invalidLoginCredentials.setStyle(errorMessage);
-            invalidSignupCredentials.setText("");
+    protected void onLoginButtonClick() throws IOException {
 
-            if (loginUsernameTextField.getText().isBlank()) {
-                loginUsernameTextField.setStyle(errorStyle);
-            } else if (loginPasswordPasswordField.getText().isBlank()) {
-                loginPasswordPasswordField.setStyle(errorStyle);
-            }
-        } else {
-            invalidLoginCredentials.setText("Login Successful!");
-            invalidLoginCredentials.setStyle(successMessage);
-            loginUsernameTextField.setStyle(successStyle);
-            loginPasswordPasswordField.setStyle(successStyle);
-            invalidSignupCredentials.setText("");
-        }
     }
 
-    @FXML
-    protected void onSignUpButtonClick() {
+        @FXML
+        protected void onSignUpButtonClick() throws UsernameAlreadyExistsException {
 
-        if (signUpUsernameTextField.getText().isBlank() || signUpEmailTextField.getText().isBlank() || signUpPasswordPasswordField.getText().isBlank() || signUpRepeatPasswordPasswordField.getText().isBlank()) {
-            invalidSignupCredentials.setText("Please fill in all fields!");
-            invalidSignupCredentials.setStyle(errorMessage);
-            invalidLoginCredentials.setText("");
+            if (signUpUsernameTextField.getText().isBlank() || signUpEmailTextField.getText().isBlank() || signUpPasswordPasswordField.getText().isBlank() || signUpRepeatPasswordPasswordField.getText().isBlank()) {
+                invalidSignupCredentials.setText("Please fill in all fields!");
+                invalidSignupCredentials.setStyle(errorMessage);
+                invalidLoginCredentials.setText("");
 
-            if (signUpUsernameTextField.getText().isBlank()) {
-                signUpUsernameTextField.setStyle(errorStyle);
-            } else if (signUpEmailTextField.getText().isBlank()) {
-                signUpEmailTextField.setStyle(errorStyle);
-            } else if (signUpPasswordPasswordField.getText().isBlank()) {
+                if (signUpUsernameTextField.getText().isBlank()) {
+                    signUpUsernameTextField.setStyle(errorStyle);
+                } else if (signUpEmailTextField.getText().isBlank()) {
+                    signUpEmailTextField.setStyle(errorStyle);
+                } else if (signUpPasswordPasswordField.getText().isBlank()) {
+                    signUpPasswordPasswordField.setStyle(errorStyle);
+                } else if (signUpRepeatPasswordPasswordField.getText().isBlank()) {
+                    signUpRepeatPasswordPasswordField.setStyle(errorStyle);
+                }
+            } else if (signUpRepeatPasswordPasswordField.getText().equals(signUpPasswordPasswordField.getText())) {
+                invalidSignupCredentials.setText("You are set!");
+                invalidSignupCredentials.setStyle(successMessage);
+                signUpUsernameTextField.setStyle(successStyle);
+                signUpEmailTextField.setStyle(successStyle);
+                signUpPasswordPasswordField.setStyle(successStyle);
+                signUpRepeatPasswordPasswordField.setStyle(successStyle);
+                invalidLoginCredentials.setText("");
+                try {
+                    if (role.getValue() == null) {
+                        invalidSignupCredentials.setText("Role field can't be empty!");
+                        invalidSignupCredentials.setStyle(errorMessage);
+                        role.setStyle(errorStyle);
+                        invalidLoginCredentials.setText("");
+                    }
+                    UserService.addUser(signUpUsernameTextField.getText(), signUpPasswordPasswordField.getText(), role.getValue().toString());
+                } catch (UsernameAlreadyExistsException uaee) {
+                    invalidSignupCredentials.setText("An account with the username already exists!");
+                    invalidSignupCredentials.setStyle(errorMessage);
+                    signUpPasswordPasswordField.setStyle(errorStyle);
+                    signUpRepeatPasswordPasswordField.setStyle(errorStyle);
+                    invalidLoginCredentials.setText("");
+                }
+
+            } else {
+                invalidSignupCredentials.setText("The Passwords don't match!");
+                invalidSignupCredentials.setStyle(errorMessage);
                 signUpPasswordPasswordField.setStyle(errorStyle);
-            } else if (signUpRepeatPasswordPasswordField.getText().isBlank()) {
                 signUpRepeatPasswordPasswordField.setStyle(errorStyle);
+                invalidLoginCredentials.setText("");
             }
-        } else if (signUpRepeatPasswordPasswordField.getText().equals(signUpPasswordPasswordField.getText())) {
-            invalidSignupCredentials.setText("You are set!");
-            invalidSignupCredentials.setStyle(successMessage);
-            signUpUsernameTextField.setStyle(successStyle);
-            signUpEmailTextField.setStyle(successStyle);
-            signUpPasswordPasswordField.setStyle(successStyle);
-            signUpRepeatPasswordPasswordField.setStyle(successStyle);
-            invalidLoginCredentials.setText("");
-        } else {
-            invalidSignupCredentials.setText("The Passwords don't match!");
-            invalidSignupCredentials.setStyle(errorMessage);
-            signUpPasswordPasswordField.setStyle(errorStyle);
-            signUpRepeatPasswordPasswordField.setStyle(errorStyle);
-            invalidLoginCredentials.setText("");
         }
     }
-}
