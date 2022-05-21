@@ -1,9 +1,13 @@
 package org.loose.fis.sre.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.sre.services.UserService;
 
@@ -44,7 +48,38 @@ public class ViewController {
 
     @FXML
     protected void onLoginButtonClick() throws IOException {
+        if (loginUsernameTextField.getText().isBlank() || loginPasswordPasswordField.getText().isBlank()) {
+            invalidLoginCredentials.setText("The Login fields are required!");
+            invalidLoginCredentials.setStyle(errorMessage);
+            invalidSignupCredentials.setText("");
 
+            if (loginUsernameTextField.getText().isBlank()) {
+                loginUsernameTextField.setStyle(errorStyle);
+            } else if (loginPasswordPasswordField.getText().isBlank()) {
+                loginPasswordPasswordField.setStyle(errorStyle);
+            }
+        } else {
+            if (!UserService.checkIfAccountIsValid(loginUsernameTextField.getText(), loginPasswordPasswordField.getText())) {
+                invalidLoginCredentials.setText("Username or password are incorrect");
+                invalidLoginCredentials.setStyle(errorMessage);
+                loginUsernameTextField.setStyle(errorStyle);
+                loginPasswordPasswordField.setStyle(errorStyle);
+                invalidSignupCredentials.setText("");
+            } else {
+                invalidLoginCredentials.setText("Login Successful!");
+                invalidLoginCredentials.setStyle(successMessage);
+                loginUsernameTextField.setStyle(successStyle);
+                loginPasswordPasswordField.setStyle(successStyle);
+                invalidSignupCredentials.setText("");
+                if (role.getValue().equals("Customer")) {
+                    Stage registerWindow = new Stage();
+                    Parent secondRoot = FXMLLoader.load(getClass().getClassLoader().getResource("viewservices.fxml"));
+                    registerWindow.setTitle("Login or Sign-Up Form!");
+                    registerWindow.setScene(new Scene(secondRoot, 1000, 700));
+                    registerWindow.show();
+                }
+            }
+        }
     }
 
         @FXML
