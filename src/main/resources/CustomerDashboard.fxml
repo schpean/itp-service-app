@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import tornadofx.control.DateTimePicker?>
+<AnchorPane prefHeight="540.0" prefWidth="734.0" style="-fx-background-color: #d7dcdd;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.CustomerDashboardController">
+    <children>
+        <Label layoutX="164.0" layoutY="28.0" prefHeight="62.0" prefWidth="422.0" text="Customer Dashboard" textFill="#727272">
+            <font>
+                <Font name="Couture-Bold" size="32.0" />
+            </font>
+        </Label>
+        <TabPane layoutX="4.0" layoutY="129.0" prefHeight="410.0" prefWidth="726.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab fx:id="appointments" text="Appointments">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="appointmentTableView" layoutX="14.0" layoutY="9.0" prefHeight="363.0" prefWidth="422.0" tableMenuButtonVisible="true">
+                                    <columns>
+                                        <TableColumn fx:id="appointmentCol" prefWidth="106.0" text="Data Disponibila" />
+                                    </columns>
+                                </TableView>
+                                <Button layoutX="507.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleBookAppointmentButton" prefHeight="28.0" prefWidth="150.0" text="Book Appointment" />
+                                <DateTimePicker fx:id="dateTimePicker" editable="true" layoutX="495.0" layoutY="47.0" onAction="#handleDatePicker"></DateTimePicker>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="appointmentsHistory" text="History">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="appointmentsHistoryTableView" layoutX="14.0" layoutY="12.0" prefHeight="358.0" prefWidth="490.0" tableMenuButtonVisible="true">
+                                    <columns>
+                                        <TableColumn fx:id="appointmentsHistoryCol" prefWidth="106.0" text="Date" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="profile" closable="false" text="Profile">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="270.0" prefWidth="438.0">
+                            <children>
+                                <TableView fx:id="profileTableView" cache="true" layoutX="14.0" layoutY="10.0" prefHeight="361.0" prefWidth="422.0" tableMenuButtonVisible="true">
+                                    <columns>
+                                        <TableColumn fx:id="profileCol" prefWidth="75.0" text="VEDEM CE PUNEM AICI" />
+                                    </columns>
+                                </TableView>
+                        </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <Hyperlink layoutX="631.0" layoutY="17.0" onAction="#handleHomeButton" text="Logout" />
+    </children>
+</AnchorPane>
