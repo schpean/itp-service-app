@@ -14,17 +14,18 @@ public class ViewServicesController {
     protected void onSoareluiButtonClick() throws IOException {
         Stage registerWindow = new Stage();
         Parent secondRoot = FXMLLoader.load(getClass().getClassLoader().getResource("CustomerDashboard.fxml"));
-        registerWindow.setTitle("Login or Sign-Up Form!");
-        registerWindow.setScene(new Scene(secondRoot, 1000, 700));
+
+        registerWindow.setTitle("CustomerDashboard");
+        registerWindow.setScene(new Scene(secondRoot, 600, 600));
         registerWindow.show();
     }
 
     @FXML
     protected void onSaguluiButtonClick() throws IOException {
         Stage registerWindow = new Stage();
-        Parent secondRoot = FXMLLoader.load(getClass().getClassLoader().getResource("firstview.fxml"));
-        registerWindow.setTitle("Login or Sign-Up Form!");
-        registerWindow.setScene(new Scene(secondRoot, 1000, 700));
+        Parent secondRoot = FXMLLoader.load(getClass().getClassLoader().getResource("CustomerDashboard.fxml"));
+        registerWindow.setTitle("CustomerDashboard");
+        registerWindow.setScene(new Scene(secondRoot, 600, 600));
         registerWindow.show();
     }
 }

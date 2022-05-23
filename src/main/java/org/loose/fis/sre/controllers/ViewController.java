@@ -77,8 +77,15 @@ public class ViewController {
                 if (role.getValue().equals("Customer")) {
                     Stage registerWindow = new Stage();
                     Parent secondRoot = FXMLLoader.load(getClass().getClassLoader().getResource("viewservices.fxml"));
-                    registerWindow.setTitle("Login or Sign-Up Form!");
-                    registerWindow.setScene(new Scene(secondRoot, 1000, 700));
+                    registerWindow.setTitle("Services in your area");
+                    registerWindow.setScene(new Scene(secondRoot, 600, 400));
+                    registerWindow.show();
+                }
+                if (role.getValue().equals("Engineer")) {
+                    Stage registerWindow = new Stage();
+                    Parent secondRoot = FXMLLoader.load(getClass().getClassLoader().getResource("EngineerDashBoard.fxml"));
+                    registerWindow.setTitle("My appointments!");
+                    registerWindow.setScene(new Scene(secondRoot, 800, 600));
                     registerWindow.show();
                 }
             }

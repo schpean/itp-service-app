@@ -14,12 +14,10 @@ import org.loose.fis.sre.exceptions.AppointmentAlreadyExistsException;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.sre.model.Appointment;
 import org.loose.fis.sre.model.User;
-import org.loose.fis.sre.services.AppointmentService;
 import tornadofx.control.DateTimePicker;
 
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.time.LocalDateTime;
 
 
 public class CustomerDashboardController {
@@ -48,8 +46,11 @@ public class CustomerDashboardController {
     private String name;
     @FXML
     public void handleBookAppointmentButton() throws UsernameAlreadyExistsException, AppointmentAlreadyExistsException {
-        AppointmentService.addAppointment(1, "Service Name", LocalDateTime.from(LocalDateTime.from(dateTimePicker.getDateTimeValue())), name,
-                "Engineer User Name", "Pending");
+
+       // AppointmentService.addAppointment(1, "Service Name", LocalDateTime.from(LocalDateTime.from(dateTimePicker.getDateTimeValue())), name,
+             //   "Engineer User Name", "Pending");
+
+        System.out.println("do something");
     }
 
     @FXML
@@ -65,7 +66,9 @@ public class CustomerDashboardController {
     @FXML
     public void handleDatePicker() {
         System.out.println("do something");
+
     }
+
 
     public void handleHomeButton(ActionEvent event) throws IOException {
         Parent register = FXMLLoader.load(getClass().getResource("FXMLs/login.fxml"));

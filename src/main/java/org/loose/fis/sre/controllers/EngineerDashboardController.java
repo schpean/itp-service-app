@@ -15,7 +15,6 @@ import org.loose.fis.sre.model.Appointment;
 
 import java.io.IOException;
 
-
 public class EngineerDashboardController {
 
     @FXML private  Tab appointment;
