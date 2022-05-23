@@ -6,12 +6,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import org.loose.fis.sre.exceptions.AppointmentAlreadyExistsException;
+import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.sre.model.Appointment;
+import org.loose.fis.sre.model.User;
+import org.loose.fis.sre.services.AppointmentService;
 import tornadofx.control.DateTimePicker;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 
 public class CustomerDashboardController {
@@ -36,9 +44,22 @@ public class CustomerDashboardController {
 
     @FXML
     private DateTimePicker dateTimePicker;
+
+    private String name;
     @FXML
-    public void handleBookAppointmentButton(){
-        System.out.println("do something");
+    public void handleBookAppointmentButton() throws UsernameAlreadyExistsException, AppointmentAlreadyExistsException {
+        AppointmentService.addAppointment(1, "Service Name", LocalDateTime.from(LocalDateTime.from(dateTimePicker.getDateTimeValue())), name,
+                "Engineer User Name", "Pending");
+    }
+
+    @FXML
+    private void receiveData(MouseEvent event) {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+
+        User u = (User) stage.getUserData();
+
+        this.name = u.getUsername();
     }
 
     @FXML
