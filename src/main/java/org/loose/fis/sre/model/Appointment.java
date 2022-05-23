@@ -1,32 +1,30 @@
 package org.loose.fis.sre.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.dizitart.no2.objects.Id;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDateTime;
 import java.util.Objects;
 
 public class Appointment {
-
     @Id
     private int id;
-
     private String ServiceName;
 
-    private LocalDateTime availability;
-
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate availability;
     private String customerUserName;
 
     private String engineerUserName;
 
     private String status;
 
-    public Appointment() {
 
-    }
 
-    public Appointment(int id, String serviceName, LocalDateTime availability, String customerUserName, String engineerUserName, String status) {
+    public Appointment(int id, String serviceName, LocalDate availability, String customerUserName, String engineerUserName, String status) {
         this.id = id;
-        ServiceName = serviceName;
+        this.ServiceName = serviceName;
         this.availability = availability;
         this.customerUserName = customerUserName;
         this.engineerUserName = engineerUserName;
@@ -41,8 +39,8 @@ public class Appointment {
         return ServiceName;
     }
 
-    public LocalDateTime getAvailability() {
-        return availability;
+    public ChronoLocalDateTime<?> getAvailability() {
+        return ChronoLocalDateTime.from(availability);
     }
 
     public String getCustomerUserName() {
@@ -65,7 +63,7 @@ public class Appointment {
         ServiceName = serviceName;
     }
 
-    public void setAvailability(LocalDateTime availability) {
+    public void setAvailability(LocalDate availability) {
         this.availability = availability;
     }
 

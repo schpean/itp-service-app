@@ -14,43 +14,40 @@ import org.loose.fis.sre.exceptions.AppointmentAlreadyExistsException;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.sre.model.Appointment;
 import org.loose.fis.sre.model.User;
+import org.loose.fis.sre.services.AppointmentService;
 import tornadofx.control.DateTimePicker;
 
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.time.LocalDate;
 
 
 public class CustomerDashboardController {
 
     @FXML private  Tab appointments;
-
     @FXML private TableView<Appointment> appointmentTableView;
-
     @FXML private TableColumn<Appointment,String> appointmentCol;
-
     @FXML private  Tab appointmentsHistory;
-
     @FXML private TableView<Appointment> appointmentsHistoryTableView;
-
     @FXML private TableColumn<Appointment,String> appointmentsHistoryCol;
-
     @FXML private  Tab profile;
-
     @FXML private TableView<Appointment> profileTableView;
-
     @FXML private TableColumn<Appointment,String> profileCol;
-
-    @FXML
-    private DateTimePicker dateTimePicker;
-
+    @FXML private DateTimePicker dateTimePicker;
     private String name;
+    private String appointmentDate;
     @FXML
+    private static int abc=9999;
     public void handleBookAppointmentButton() throws UsernameAlreadyExistsException, AppointmentAlreadyExistsException {
 
-       // AppointmentService.addAppointment(1, "Service Name", LocalDateTime.from(LocalDateTime.from(dateTimePicker.getDateTimeValue())), name,
-             //   "Engineer User Name", "Pending");
+        //AppointmentService.addAppointment(1, "Service Name", LocalDateTime.from(dateTimePicker.getDateTimeValue()), name, "Engineer User Name", "Pending");
+        // AppointmentService.addAppointment(1, "Service Name", LocalDateTime.parse(String.valueOf(LocalDateTime.from(dateTimePicker.getDateTimeValue()))), name, "Engineer User Name", "Pending");
+      // appointmentDate= String.valueOf(LocalDateTime.from(dateTimePicker.getDateTimeValue()));
+        System.out.println(dateTimePicker.getDateTimeValue());
+        appointmentDate = String.valueOf(dateTimePicker.getDateTimeValue());
+        System.out.println(appointmentDate);
 
-        System.out.println("do something");
+        AppointmentService.addAppointment(abc++, "Service Name", LocalDate.from(dateTimePicker.getDateTimeValue()), name, "Engineer User Name", "Pending");
     }
 
     @FXML
