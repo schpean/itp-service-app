@@ -41,15 +41,16 @@ public class CustomerDashboardController {
     private String name;
     private String appointmentDate;
 
-    @FXML
-    private static int abc= ThreadLocalRandom.current().nextInt(400, 555 + 1);;
+    private static int id = ThreadLocalRandom.current().nextInt(0, 99999);
 
     public void handleBookAppointmentButton() throws UsernameAlreadyExistsException, AppointmentAlreadyExistsException {
         System.out.println(dateTimePicker.getDateTimeValue());
         appointmentDate = String.valueOf(dateTimePicker.getDateTimeValue());
         System.out.println(appointmentDate);
 
-        Appointment appointment = AppointmentService.addAppointment(abc++, "Service Name", LocalDate.from(dateTimePicker.getDateTimeValue()), name, "RazvanPopescu", "Pending");
+        System.out.println(AppointmentService.getAppointments());
+
+        Appointment appointment = AppointmentService.addAppointment(id++,"Service Name", LocalDate.from(dateTimePicker.getDateTimeValue()), name, "RazvanPopescu", "Pending");
         appointmentsHistoryCol.setCellValueFactory(new PropertyValueFactory<>("availability"));
         engineerCol.setCellValueFactory(new PropertyValueFactory<>("engineerUserName"));
 

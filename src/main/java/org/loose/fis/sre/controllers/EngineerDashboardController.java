@@ -1,8 +1,10 @@
 package org.loose.fis.sre.controllers;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,9 +18,10 @@ import org.loose.fis.sre.model.Appointment;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class EngineerDashboardController {
+public class EngineerDashboardController implements Initializable {
 
     @FXML private  Tab appointment;
 
@@ -46,16 +49,22 @@ public class EngineerDashboardController {
 
     @FXML private Label usernameLabel;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        appointmentsDateCol.setCellValueFactory(new PropertyValueFactory<>("availability"));
+        appointmentsNameCol.setCellValueFactory(new PropertyValueFactory<>("customerUserName"));
+        //statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
 
+        ObservableList<Appointment> appointments = appointmentsHistoryTableView.getItems();
+        appointments.add(new Appointment(1245, "Service Name", LocalDate.now(), "George", "Engineer", "Pending"));
+        appointments.add(new Appointment(124, "Service Name", LocalDate.now(), "Vasile", "Engineer", "Pending"));
 
-    public void initialize(URL url, ResourceBundle resourceBundle){
-        appointmentsNameCol.setCellValueFactory(new PropertyValueFactory<Appointment, String>("customerUserName"));
-
+        appointmentsTableView.setItems(appointments);
     }
 
     public void acceptButton(){}
 
-    public void dennyButton(){}
+    public void denyButton(){}
 
     public void removeButton(){}
 
@@ -67,4 +76,8 @@ public class EngineerDashboardController {
         window.show();
     }
 
+    public void denyButton(ActionEvent actionEvent) {
+        int selectedID = appointmentsTableView.getSelectionModel().getSelectedIndex();
+        appointmentsTableView.getItems().remove(selectedID);
+    }
 }

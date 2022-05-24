@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="540.0" prefWidth="734.0" style="-fx-background-color: #d7dcdd;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.EngineerDashboardController">
+<AnchorPane prefHeight="540.0" prefWidth="734.0" style="-fx-background-color: #d7dcdd;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.EngineerDashboardController">
     <children>
         <Label layoutX="164.0" layoutY="28.0" prefHeight="62.0" prefWidth="422.0" text="Engineer Dashboard" textFill="#727272">
             <font>
@@ -31,7 +25,7 @@
                                     </columns>
                                 </TableView>
                                 <Button layoutX="507.0" layoutY="138.0" mnemonicParsing="false" onAction="#acceptButton" prefHeight="28.0" prefWidth="150.0" text="Accept" />
-                                <Button layoutX="507.0" layoutY="180.0" mnemonicParsing="false" onAction="#dennyButton" prefHeight="28.0" prefWidth="150.0" text="Denny" />
+                                <Button layoutX="507.0" layoutY="180.0" mnemonicParsing="false" onAction="#denyButton" prefHeight="28.0" prefWidth="150.0" text="Deny" />
                                 <Button layoutX="507.0" layoutY="280.0" mnemonicParsing="false" onAction="#removeButton" prefHeight="28.0" prefWidth="150.0" text="Remove" />
                             </children>
                         </AnchorPane>

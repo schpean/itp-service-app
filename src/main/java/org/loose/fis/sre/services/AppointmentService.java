@@ -1,6 +1,7 @@
 package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
+import org.dizitart.no2.objects.Cursor;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.AppointmentAlreadyExistsException;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
@@ -27,6 +28,10 @@ public class AppointmentService {
         return appointment;
     }
 
+    public static long getAppointments() {
+        Cursor results = appointmentRepository.find();
+        return appointmentRepository.size();
+    }
 
 /* public static void checkAppointmentDoesNotAlreadyExist(String serviceName, LocalDate availability, String customerUserName, String engineerUserName) throws AppointmentAlreadyExistsException {
       /  for (Appointment appointment : appointmentRepository.find()) {
