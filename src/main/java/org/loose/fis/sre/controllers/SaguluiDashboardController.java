@@ -25,7 +25,7 @@ import java.time.LocalDate;
 import java.util.concurrent.ThreadLocalRandom;
 
 
-public class CustomerDashboardController {
+public class SaguluiDashboardController {
 
     @FXML private  Tab appointments;
     @FXML private TableView<Appointment> appointmentTableView;
@@ -50,7 +50,7 @@ public class CustomerDashboardController {
 
         System.out.println(AppointmentService.getAppointments());
 
-        Appointment appointment = AppointmentService.addAppointment(id++,"Service Name", LocalDate.from(dateTimePicker.getDateTimeValue()), name, "RazvanPopescu", "Pending");
+        Appointment appointment = AppointmentService.addAppointment(id++,"Service Name", LocalDate.from(dateTimePicker.getDateTimeValue()), name, "Ionel", "Pending");
         appointmentsHistoryCol.setCellValueFactory(new PropertyValueFactory<>("availability"));
         engineerCol.setCellValueFactory(new PropertyValueFactory<>("engineerUserName"));
 

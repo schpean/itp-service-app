@@ -33,8 +33,9 @@ public class AppointmentService {
         return appointmentRepository.size();
     }
 
-/* public static void checkAppointmentDoesNotAlreadyExist(String serviceName, LocalDate availability, String customerUserName, String engineerUserName) throws AppointmentAlreadyExistsException {
-      /  for (Appointment appointment : appointmentRepository.find()) {
+    /*
+ public static void checkAppointmentDoesNotAlreadyExist(String serviceName, LocalDate availability, String customerUserName, String engineerUserName) throws AppointmentAlreadyExistsException {
+        for (Appointment appointment : appointmentRepository.find()) {
             if (Objects.equals(serviceName, appointment.getServiceName())
             && availability.compareTo( appointment.getAvailability()) == 0
             && Objects.equals(customerUserName, appointment.getCustomerUserName())

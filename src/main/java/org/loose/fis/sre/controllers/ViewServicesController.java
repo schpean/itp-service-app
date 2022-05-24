@@ -23,7 +23,7 @@ public class ViewServicesController {
     @FXML
     protected void onSaguluiButtonClick() throws IOException {
         Stage registerWindow = new Stage();
-        Parent secondRoot = FXMLLoader.load(getClass().getClassLoader().getResource("CustomerDashboard.fxml"));
+        Parent secondRoot = FXMLLoader.load(getClass().getClassLoader().getResource("CustomerDashboard_Sagului.fxml"));
         registerWindow.setTitle("CustomerDashboard");
         registerWindow.setScene(new Scene(secondRoot, 600, 600));
         registerWindow.show();

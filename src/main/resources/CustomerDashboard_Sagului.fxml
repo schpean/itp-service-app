@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import tornadofx.control.*?>
+
+<AnchorPane prefHeight="540.0" prefWidth="734.0" style="-fx-background-color: #d7dcdd;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.SaguluiDashboardController">
+    <children>
+        <Label layoutX="164.0" layoutY="28.0" prefHeight="62.0" prefWidth="422.0" text="Customer Dashboard" textFill="#727272">
+            <font>
+                <Font name="Couture-Bold" size="32.0" />
+            </font>
+        </Label>
+        <TabPane layoutX="4.0" layoutY="129.0" prefHeight="410.0" prefWidth="726.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab fx:id="appointments" text="Appointments">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="726.0">
+                            <children>
+                                <Button fx:id="BookAppointment" layoutX="38.0" layoutY="101.0" mnemonicParsing="false" onAction="#handleBookAppointmentButton" prefHeight="28.0" prefWidth="150.0" text="Book Appointment" />
+                                <DateTimePicker fx:id="dateTimePicker" editable="true" layoutX="4.0" layoutY="48.0" onAction="#handleDatePicker" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="appointmentsHistory" text="History">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="appointmentsHistoryTableView" layoutX="14.0" layoutY="12.0" prefHeight="358.0" prefWidth="490.0" tableMenuButtonVisible="true">
+                                    <columns>
+                                        <TableColumn fx:id="appointmentsHistoryCol" prefWidth="158.0" text="Date" />
+                                        <TableColumn fx:id="engineerCol" prefWidth="158.0" text="Engineer" />
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                </TableView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="profile" closable="false" text="Profile">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="270.0" prefWidth="438.0" />
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <Hyperlink layoutX="631.0" layoutY="17.0" onAction="#handleHomeButton" text="Logout" />
+    </children>
+</AnchorPane>
