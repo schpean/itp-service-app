@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.dizitart.no2.objects.Id;
 
 import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDateTime;
 import java.util.Objects;
 
 public class Appointment {
@@ -18,9 +17,10 @@ public class Appointment {
 
     private String engineerUserName;
 
+
     private String status;
 
-
+    //public ObservableList<Appointment> appobs;
 
     public Appointment(int id, String serviceName, LocalDate availability, String customerUserName, String engineerUserName, String status) {
         this.id = id;
@@ -31,6 +31,9 @@ public class Appointment {
         this.status = status;
     }
 
+
+
+
     public int getId() {
         return id;
     }
@@ -39,8 +42,8 @@ public class Appointment {
         return ServiceName;
     }
 
-    public ChronoLocalDateTime<?> getAvailability() {
-        return ChronoLocalDateTime.from(availability);
+    public LocalDate getAvailability() {
+        return availability;
     }
 
     public String getCustomerUserName() {

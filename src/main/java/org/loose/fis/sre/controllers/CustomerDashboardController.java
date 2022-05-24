@@ -1,5 +1,6 @@
 package org.loose.fis.sre.controllers;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.loose.fis.sre.exceptions.AppointmentAlreadyExistsException;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
@@ -20,6 +22,7 @@ import tornadofx.control.DateTimePicker;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class CustomerDashboardController {
@@ -30,25 +33,41 @@ public class CustomerDashboardController {
     @FXML private  Tab appointmentsHistory;
     @FXML private TableView<Appointment> appointmentsHistoryTableView;
     @FXML private TableColumn<Appointment,String> appointmentsHistoryCol;
+    @FXML private TableColumn<Appointment,String> engineerCol;
     @FXML private  Tab profile;
     @FXML private TableView<Appointment> profileTableView;
     @FXML private TableColumn<Appointment,String> profileCol;
     @FXML private DateTimePicker dateTimePicker;
     private String name;
     private String appointmentDate;
-    @FXML
-    private static int abc=9999;
-    public void handleBookAppointmentButton() throws UsernameAlreadyExistsException, AppointmentAlreadyExistsException {
 
-        //AppointmentService.addAppointment(1, "Service Name", LocalDateTime.from(dateTimePicker.getDateTimeValue()), name, "Engineer User Name", "Pending");
-        // AppointmentService.addAppointment(1, "Service Name", LocalDateTime.parse(String.valueOf(LocalDateTime.from(dateTimePicker.getDateTimeValue()))), name, "Engineer User Name", "Pending");
-      // appointmentDate= String.valueOf(LocalDateTime.from(dateTimePicker.getDateTimeValue()));
+    @FXML
+    private static int abc= ThreadLocalRandom.current().nextInt(400, 555 + 1);;
+
+    public void handleBookAppointmentButton() throws UsernameAlreadyExistsException, AppointmentAlreadyExistsException {
         System.out.println(dateTimePicker.getDateTimeValue());
         appointmentDate = String.valueOf(dateTimePicker.getDateTimeValue());
         System.out.println(appointmentDate);
 
-        AppointmentService.addAppointment(abc++, "Service Name", LocalDate.from(dateTimePicker.getDateTimeValue()), name, "Engineer User Name", "Pending");
+        Appointment appointment = AppointmentService.addAppointment(abc++, "Service Name", LocalDate.from(dateTimePicker.getDateTimeValue()), name, "RazvanPopescu", "Pending");
+        appointmentsHistoryCol.setCellValueFactory(new PropertyValueFactory<>("availability"));
+        engineerCol.setCellValueFactory(new PropertyValueFactory<>("engineerUserName"));
+
+        ObservableList<Appointment> appointments = appointmentsHistoryTableView.getItems();
+        appointments.add(appointment);
+        appointmentsHistoryTableView.setItems(appointments);
     }
+
+   /*
+    public void initialize() throws Exception{
+        engineerCol.setCellValueFactory(new PropertyValueFactory<Appointment, String>("engineerUserName"));
+        appointmentsHistoryCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("id"));
+        appointmentsHistoryTableView.setItems(someapp);
+    }
+   private ObservableList<Appointment> someapp = FXCollections.observableArrayList(
+   new Appointment(abc++, "Service Name", LocalDate.from(dateTimePicker.getDateTimeValue()),  name, "RazvanPopescu", "Pending"));
+
+*/
 
     @FXML
     private void receiveData(MouseEvent event) {
@@ -60,11 +79,13 @@ public class CustomerDashboardController {
         this.name = u.getUsername();
     }
 
+
     @FXML
     public void handleDatePicker() {
         System.out.println("do something");
 
     }
+
 
 
     public void handleHomeButton(ActionEvent event) throws IOException {
@@ -74,5 +95,6 @@ public class CustomerDashboardController {
         window.setScene(registerScene);
         window.show();
     }
+
 
 }

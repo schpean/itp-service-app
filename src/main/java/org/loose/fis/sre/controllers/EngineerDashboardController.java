@@ -10,22 +10,25 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.loose.fis.sre.model.Appointment;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class EngineerDashboardController {
 
     @FXML private  Tab appointment;
 
-    @FXML private TableView<Appointment> appointmentsTableView;
+    @FXML private TableView<Appointment> appointmentsTableView;  //this
 
-    @FXML private TableColumn<Appointment, String> appointmentsNameCol;
+    @FXML private TableColumn<Appointment, String> appointmentsNameCol; // this
 
-    @FXML private TableColumn<Appointment,String> appointmentsDateCol;
+    @FXML private TableColumn<Appointment,String> appointmentsDateCol; // this
 
-    @FXML private TableColumn<Appointment,String> statusCol;
+    @FXML private TableColumn<Appointment,String> statusCol; // this
 
     @FXML private  Tab appointmentsHistory;
 
@@ -42,6 +45,13 @@ public class EngineerDashboardController {
     @FXML private TableColumn<Appointment,String> profileNameCol;
 
     @FXML private Label usernameLabel;
+
+
+
+    public void initialize(URL url, ResourceBundle resourceBundle){
+        appointmentsNameCol.setCellValueFactory(new PropertyValueFactory<Appointment, String>("customerUserName"));
+
+    }
 
     public void acceptButton(){}
 
